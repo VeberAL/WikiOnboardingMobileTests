@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.DeviceConfig;
-import config.HostConfig;
 import drivers.BrowserstackDriver;
 import drivers.EmulatorDriver;
 import drivers.RealDeviceDriver;
@@ -33,18 +32,17 @@ public class TestBase {
     }
 
     DeviceConfig deviceConfig = ConfigFactory.create(DeviceConfig.class, System.getProperties());
-    HostConfig hostConfig = ConfigFactory.create(HostConfig.class, System.getProperties());
 
     @BeforeEach
     void beforeEach() {
-        System.out.println("Запуск тестов осуществлён на " + hostConfig.hostName() + ".");
+        System.out.println("Запуск тестов осуществлён на " + System.getProperty("deviceHost") + ".");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
     }
 
     @AfterEach
     void addAttachments() {
-        System.out.println("Тест успешно выполнен на " + deviceConfig.platformName() + " (устройство " + hostConfig.deviceName() + ").");
+        System.out.println("Тест успешно выполнен на " + deviceConfig.platformName() + " (устройство " + System.getProperty("deviceHost") + ").");
         String sessionId = Selenide.sessionId().toString();
 
         Attachments.pageSource();

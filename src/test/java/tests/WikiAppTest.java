@@ -1,26 +1,25 @@
 package tests;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
-@Tag("App")
+
 public class WikiAppTest extends TestBase {
 
-    ScreenPageOne pageOne = new ScreenPageOne();
-    ScreenPageTwo pageTwo = new ScreenPageTwo();
-    ScreenPageThree pageThree = new ScreenPageThree();
-    ScreenPageFour pageFour = new ScreenPageFour();
+    ScreenPageOne onboardingPageOne = new ScreenPageOne();
+    ScreenPageTwo onboardingPageTwo = new ScreenPageTwo();
+    ScreenPageThree onboardingPageThree = new ScreenPageThree();
+    ScreenPageFour onboardingPageFour = new ScreenPageFour();
     MainPage mainPage = new MainPage();
 
     @Test
-    @DisplayName("Проверка успешной загрузки onboarding экрана")
+    @DisplayName("Проверка успешной загрузки начальных экранов и стартовой страницы.")
     void successfulGettingStartedPageTest() {
-        pageOne.checkOpenPage("The Free Encyclopedia …in over 300 languages");
-        pageTwo.checkOpenPage("New ways to explore");
-        pageThree.checkOpenPage("Reading lists with sync");
-        pageFour.checkOpenPage("Data & Privacy");
+        onboardingPageOne.checkOpenPage("The Free Encyclopedia …in over 300 languages").clickButtonContinue();
+        onboardingPageTwo.checkOpenPage("New ways to explore").clickButtonContinue();
+        onboardingPageThree.checkOpenPage("Reading lists with sync").clickButtonContinue();
+        onboardingPageFour.checkOpenPage("Data & Privacy").clickButtonStart();
         mainPage.checkPageOpenedCorrectly("Search Wikipedia");
     }
 }

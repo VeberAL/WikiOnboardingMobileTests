@@ -6,9 +6,6 @@ import org.aeonbits.owner.Config;
         "classpath:host/${deviceHost}.properties"
 })
 public interface HostConfig extends Config {
-    @Key("host.name")
-    @DefaultValue("browserstack")
-    String hostName();
 
     @Key("host.url")
     @DefaultValue("http://hub.browserstack.com/wd/hub")

@@ -5,7 +5,6 @@ import pages.components.PageComponent;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.accessibilityId;
-import static io.qameta.allure.Allure.step;
 
 public class ScreenPageTwo {
 
@@ -15,12 +14,15 @@ public class ScreenPageTwo {
             pageText = $(accessibilityId("Page 2 of 4"));
 
     public ScreenPageTwo checkOpenPage(String value) {
-        step("Открытие второй страницы.", () -> {
-            pageComponent.checkPrimaryText(value);
-            pageComponent.checkSkipButtonVisibility();
-            pageComponent.checkIndicatorVisibility(pageText);
-        });
-        step("Нажатие кнопки Continue.", () -> pageComponent.clickContinueButton());
+        pageComponent.checkPrimaryText(value);
+        pageComponent.checkSkipButtonVisibility();
+        pageComponent.checkIndicatorVisibility(pageText);
         return this;
     }
+
+    public void clickButtonContinue() {
+        pageComponent.clickContinueButton();
+    }
 }
+
+
