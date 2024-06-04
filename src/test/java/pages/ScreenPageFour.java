@@ -16,6 +16,7 @@ public class ScreenPageFour {
             pageText = $(accessibilityId("Page 4 of 4")),
             getStartedButton = $(id("org.wikipedia.alpha:id/fragment_onboarding_done_button"));
 
+    @Step("Проверка открытия четвертой страницы.")
     public ScreenPageFour checkOpenPage(String value) {
         pageComponent.checkPrimaryText(value);
         pageComponent.checkIndicatorVisibility(pageText);

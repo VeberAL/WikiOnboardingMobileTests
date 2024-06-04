@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.PageComponent;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -13,7 +14,7 @@ public class ScreenPageOne {
     private final SelenideElement
             pageText = $(accessibilityId("Page 1 of 4"));
 
-
+    @Step("Проверка открытия первой страницы.")
     public ScreenPageOne checkOpenPage(String value) {
         pageComponent.checkPrimaryText(value);
         pageComponent.checkSkipButtonVisibility();
